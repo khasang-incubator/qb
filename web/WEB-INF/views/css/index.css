@@ -22,7 +22,7 @@ body {
 	margin-left: 10px;
 	border: 1px dotted #fff;
 	border-radius: 15px;
-	width: 500px;
+	width: 700px;
 	height: 300px;
 	color: white;
 	padding: 10px;
@@ -35,7 +35,7 @@ body {
 	margin-right: 10px;
 	border: 1px dotted #fff;
 	border-radius: 15px;
-	width: 410px;
+	width: 210px;
 	height: 300px;
 	color: white;
 	padding: 10px;
@@ -53,3 +53,12 @@ body {
 	color:white;
 }
 
+#signinButton {
+	border: 1px dotted #fff;
+	color: white;
+	background-color: black;
+	padding: 3px 30px;
+	text-align: center;
+	display: inline-block;
+	border-radius: 10px;
+}

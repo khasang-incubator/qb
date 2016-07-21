@@ -9,7 +9,7 @@ public class AppController {
     @RequestMapping("/")
     public String hello(Model model) {
         model.addAttribute("hello", "basic spring");
-        return "hello";
+        return "index";
     }
 
     @RequestMapping("/hello")
