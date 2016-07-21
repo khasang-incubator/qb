@@ -22,6 +22,10 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd http://www.springfr
         <constructor-arg value="hello"/>
     </bean>
 
+    <bean id="theStage"
+          class="io.khasang.qb.model.Stage"
+          factory-method="getInstance"/>
+
     <!-- This tag allows for mapping the dispatcher-servlet to "/" -->
     <mvc:default-servlet-handler/>
 
