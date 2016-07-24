@@ -1,8 +1,5 @@
 package io.khasang.qb.model;
 
-/**
- * Created by Андрей on 20.07.2016.
- */
 public class Stage {
     String name;
 

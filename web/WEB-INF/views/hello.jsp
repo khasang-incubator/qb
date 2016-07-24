@@ -4,9 +4,6 @@
     <title>QB! Welcome page!</title>
 </head>
 <body>
-<h1>Hello!</h1>
-<p>${hello}</p>
-<p>nothing</p>
-<p>Конликт</p>
+    <p>${hello}</p>
 </body>
 </html>

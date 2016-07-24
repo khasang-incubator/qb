@@ -12,18 +12,16 @@ public class AppController {
     @Autowired
     Message message;
 
-    @Autowired
-    Stage stage;
-
     @RequestMapping("/")
     public String hello(Model model) {
-        model.addAttribute("hello", "basic spring");
+        model.addAttribute("hello", message.getHello());
         return "hello";
     }
 
-    @RequestMapping("/hello")
-    public String next(Model model) {
-        model.addAttribute("theStage", stage.getName());
-        return "next";
+    @RequestMapping("/confidential/hello")
+    public String message(Model model){
+        model.addAttribute("message", "How you receive access to this sercure page!?");
+        return "message";
     }
+
 }
