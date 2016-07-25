@@ -7,7 +7,7 @@
 <div id="menuContainer">
    &ensp;
    <a href="articles"><button id="menuButton">Articles</button></a>
-   <button id="menuButton">Tests</button>
+   <a href="tests"><button id="menuButton">Tests</button></a>
    <button id="menuButton">HZ</button>
    <button id="menuButton">Profile</button>
    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;

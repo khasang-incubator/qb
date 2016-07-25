@@ -29,4 +29,8 @@ public class AppController {
         return "articles";
     }
 
+    @RequestMapping("/tests")
+    public String tests(){
+        return "tests";
+    }
 }
