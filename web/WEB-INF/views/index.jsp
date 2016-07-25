@@ -3,7 +3,6 @@
 <head>
   <title>Welcome to QB</title>
   	<link rel="stylesheet" href="css/index.css">
-	<link rel="stylesheet" href='<c:url value="/resources/css/main.css" />' type="text/css"/>
 	<link rel="stylesheet" href='<c:url value="/resources/css/yandex.css"/>' type="text/css"/>
 </head>
 <body>

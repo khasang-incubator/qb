@@ -13,7 +13,7 @@ public class AppController {
     Message message;
 
     @RequestMapping("/")
-    public String hello(Model model) {
+    public String index(Model model) {
         model.addAttribute("hello", "basic spring");
         return "index";
     }
@@ -22,6 +22,11 @@ public class AppController {
     public String message(Model model){
         model.addAttribute("message", "How you receive access to this sercure page!?");
         return "message";
+    }
+
+    @RequestMapping("/articles")
+    public String articles() {
+        return "articles";
     }
 
 }
