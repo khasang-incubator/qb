@@ -24,4 +24,10 @@ public class AppController {
         return "message";
     }
 
+    @RequestMapping("/mymessage")
+    public String myMessage(Model model) {
+        model.addAttribute("myMessage", "Hello, it's my first bean :)");
+        return "myMessage";
+    }
+
 }

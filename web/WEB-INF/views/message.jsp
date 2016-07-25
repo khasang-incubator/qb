@@ -4,6 +4,6 @@
     <title>Title</title>
 </head>
 <body>
-${theStage}
+    <p>${message}</p>
 </body>
 </html>
