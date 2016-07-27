@@ -23,11 +23,4 @@ public class AppController {
         model.addAttribute("message", "How you receive access to this sercure page!?");
         return "message";
     }
-
-    @RequestMapping("/mymessage")
-    public String myMessage(Model model) {
-        model.addAttribute("myMessage", "Hello, it's my first bean :)");
-        return "myMessage";
-    }
-
 }
