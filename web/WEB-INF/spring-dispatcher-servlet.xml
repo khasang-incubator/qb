@@ -17,8 +17,11 @@ http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd http://www.springfr
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <bean name="message" class="io.khasang.qb.model.Message">
+        <constructor-arg name="message" value="Hello"/>
+    </bean>
+
     <bean name="hello" class="io.khasang.qb.model.Hello">
-        <property name="message" value="Hello, first bean!"/>
     </bean>
 
     <!-- This tag allows for mapping the dispatcher-servlet to "/" -->

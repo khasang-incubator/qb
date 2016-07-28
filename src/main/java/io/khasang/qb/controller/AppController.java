@@ -1,6 +1,7 @@
 package io.khasang.qb.controller;
 
 import io.khasang.qb.model.Hello;
+import io.khasang.qb.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AppController {
+    @Autowired
+    Message message;
+
     @Autowired
     Hello hello;
 
@@ -19,7 +23,7 @@ public class AppController {
 
     @RequestMapping("/hello")
     public String next(Model model) {
-        model.addAttribute("row", hello.getMessage());
+        model.addAttribute("row", hello.getHello());
         return "next";
     }
 
