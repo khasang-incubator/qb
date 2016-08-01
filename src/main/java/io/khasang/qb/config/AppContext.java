@@ -30,7 +30,7 @@ public class AppContext {
 
     @Bean
     public CreateTable createTable(){
-        return new CreateTable(jdbcTemplate());
+        return new CreateTable();
     }
 
     @Bean

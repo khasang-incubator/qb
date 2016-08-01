@@ -1,13 +1,11 @@
 package io.khasang.qb.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class CreateTable {
-    private JdbcTemplate jdbcTemplate;
-
-    public CreateTable(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    @Autowired
+    JdbcTemplate jdbcTemplate;
 
     public CreateTable() {
     }
