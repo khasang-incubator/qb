@@ -1,6 +1,8 @@
 package io.khasang.qb.config;
 
 import io.khasang.qb.model.CreateTable;
+import io.khasang.qb.model.DropTable;
+import io.khasang.qb.model.Insert;
 import io.khasang.qb.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -31,6 +33,16 @@ public class AppContext {
     @Bean
     public CreateTable createTable(){
         return new CreateTable(jdbcTemplate());
+    }
+
+    @Bean
+    public DropTable dropTable() {
+        return new DropTable(jdbcTemplate());
+    }
+
+    @Bean
+    public Insert insert() {
+        return new Insert(jdbcTemplate());
     }
 
     @Bean

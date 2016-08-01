@@ -14,13 +14,24 @@ public class CreateTable {
 
     public String createTable() {
         try {
-            jdbcTemplate.execute("DROP TABLE IF EXISTS distributors;");
-            jdbcTemplate.execute("CREATE TABLE distributors (\n" +
-                    "    id     integer,\n" +
-                    "    name    varchar(40),\n" +
-                    "    PRIMARY KEY(id)\n" +
+            jdbcTemplate.execute("DROP TABLE IF EXISTS cars;");
+            jdbcTemplate.execute("CREATE TABLE cars (\n" +
+                    " id integer,\n" +
+                    " model varchar(40),\n" +
+                    " car_number integer,\n" +
+                    " horsepower integer,\n" +
+                    " PRIMARY KEY(id)\n" +
                     ");");
-            return "DB created";
+            return "The table was created";
+        } catch (Exception e) {
+            return e.toString();
+        }
+    }
+
+    public String dropTable() {
+        try {
+            jdbcTemplate.execute("DROP TABLE IF EXISTS distributors");
+            return "The table was dropped";
         } catch (Exception e) {
             return e.toString();
         }

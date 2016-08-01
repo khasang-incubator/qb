@@ -1,8 +1,6 @@
 package io.khasang.qb.controller;
 
-import io.khasang.qb.model.CreateTable;
-import io.khasang.qb.model.Message;
-import io.khasang.qb.model.Stage;
+import io.khasang.qb.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +13,12 @@ public class AppController {
 
     @Autowired
     CreateTable createTable;
+
+    @Autowired
+    DropTable dropTable;
+
+    @Autowired
+    Insert insert;
 
     @RequestMapping("/")
     public String hello(Model model) {
@@ -29,9 +33,21 @@ public class AppController {
     }
 
     @RequestMapping("/create")
-    public String create(Model model){
+    public String create(Model model) {
         model.addAttribute("create", createTable.createTable());
         return "create";
+    }
+
+    @RequestMapping("/drop")
+    public String drop(Model model) {
+        model.addAttribute("drop", dropTable.dropTable());
+        return "drop";
+    }
+
+    @RequestMapping("/insert")
+    public String insert(Model model) {
+        model.addAttribute("insert", insert.insert());
+        return "insert";
     }
 
 }
