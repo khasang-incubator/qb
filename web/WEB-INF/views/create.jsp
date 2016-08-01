@@ -1,16 +1,16 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Igort
-  Date: 24.07.2016
-  Time: 22:20
+  User: Azon
+  Date: 31.07.2016
+  Time: 20:35
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Secured page</title>
+    <title>CreateTable</title>
 </head>
 <body>
-${message}
+${create}
 </body>
 </html>

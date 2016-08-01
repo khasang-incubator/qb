@@ -1,5 +1,6 @@
 package io.khasang.qb.controller;
 
+import io.khasang.qb.model.CreateTable;
 import io.khasang.qb.model.Message;
 import io.khasang.qb.model.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AppController {
     @Autowired
     Message message;
+
+    @Autowired
+    CreateTable createTable;
 
     @RequestMapping("/")
     public String index(Model model) {
@@ -33,4 +37,11 @@ public class AppController {
     public String tests(){
         return "tests";
     }
+
+    @RequestMapping("/create")
+    public String create(Model model){
+        model.addAttribute("create", createTable.createTable());
+        return "create";
+    }
+
 }
