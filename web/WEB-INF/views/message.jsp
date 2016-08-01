@@ -1,9 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Secure page</title>
 </head>
 <body>
-    <p>${message}</p>
+${message}
 </body>
 </html>
