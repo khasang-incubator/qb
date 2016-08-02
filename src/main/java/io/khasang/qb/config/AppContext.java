@@ -1,7 +1,6 @@
 package io.khasang.qb.config;
 
-import io.khasang.qb.model.CreateTable;
-import io.khasang.qb.model.Message;
+import io.khasang.qb.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,6 +30,21 @@ public class AppContext {
     @Bean
     public CreateTable createTable(){
         return new CreateTable(jdbcTemplate());
+    }
+
+    @Bean
+    public InsertUser insertUser(){
+        return new InsertUser(jdbcTemplate());
+    }
+
+    @Bean
+    public DeleteUser deleteUser(){
+        return new DeleteUser(jdbcTemplate());
+    }
+
+    @Bean
+    public UpdateUser updateUser(){
+        return new UpdateUser(jdbcTemplate());
     }
 
     @Bean
