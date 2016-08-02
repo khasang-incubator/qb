@@ -27,4 +27,10 @@ public class AppController {
         return "next";
     }
 
+    @RequestMapping("/confidential/hello")
+    public String confidential(Model model){
+        model.addAttribute("message", "How do you receive access to this secure page????!!!!");
+        return "message";
+    }
+
 }

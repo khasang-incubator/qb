@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 public class AppContext {
     @Bean
     public Message message() {
-        return new Message("Hello");
+        return new Message("oops");
     }
 
     @Bean
