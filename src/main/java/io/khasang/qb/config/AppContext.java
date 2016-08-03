@@ -1,5 +1,6 @@
 package io.khasang.qb.config;
 
+import io.khasang.qb.model.CreateTableRoles;
 import io.khasang.qb.model.CreateTableUsers;
 import io.khasang.qb.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,11 @@ public class AppContext {
     @Bean
     public CreateTableUsers createTableUsers(){
         return new CreateTableUsers();
+    }
+
+    @Bean
+    public CreateTableRoles createTableRoles(){
+        return new CreateTableRoles();
     }
 
     @Bean

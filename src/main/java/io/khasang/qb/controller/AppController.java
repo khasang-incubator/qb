@@ -12,9 +12,6 @@ public class AppController {
     @Autowired
     Message message;
 
-    @Autowired
-    CreateTableUsers createTableUsers;
-
     @RequestMapping("/")
     public String index(Model model) {
         model.addAttribute("hello", "basic spring");
@@ -35,12 +32,6 @@ public class AppController {
     @RequestMapping("/tests")
     public String tests(){
         return "tests";
-    }
-
-    @RequestMapping("/createUser")
-    public String create(Model model){
-        model.addAttribute("create", createTableUsers.createTable());
-        return "createUser";
     }
 
 }
