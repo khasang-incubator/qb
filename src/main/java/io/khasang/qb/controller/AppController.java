@@ -1,8 +1,7 @@
 package io.khasang.qb.controller;
 
-import io.khasang.qb.model.CreateTable;
+import io.khasang.qb.model.CreateTableUsers;
 import io.khasang.qb.model.Message;
-import io.khasang.qb.model.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +13,7 @@ public class AppController {
     Message message;
 
     @Autowired
-    CreateTable createTable;
+    CreateTableUsers createTableUsers;
 
     @RequestMapping("/")
     public String index(Model model) {
@@ -38,10 +37,10 @@ public class AppController {
         return "tests";
     }
 
-    @RequestMapping("/create")
+    @RequestMapping("/createUser")
     public String create(Model model){
-        model.addAttribute("create", createTable.createTable());
-        return "create";
+        model.addAttribute("create", createTableUsers.createTable());
+        return "createUser";
     }
 
 }
