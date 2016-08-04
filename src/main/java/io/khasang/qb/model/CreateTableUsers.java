@@ -20,7 +20,7 @@ public class CreateTableUsers {
                     "    password    VARCHAR (45) NOT NULL,\n" +
                     "    PRIMARY KEY(username)\n" +
                     ");");
-            return "DB created";
+            return "users table created";
         } catch (Exception e) {
             return e.toString();
         }
