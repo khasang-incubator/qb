@@ -12,6 +12,12 @@ public class CreateTableRoles {
     public CreateTableRoles() {}
 
     public String createTable() {
+        CREATE TABLE user_roles (
+                user_role_id SERIAL PRIMARY KEY,
+                username varchar(45) NOT NULL UNIQUE,
+                role varchar(45) NOT NULL UNIQUE);
+
+
         String sql ="CREATE TABLE user_roles (\n" +
                 "  user_role_id int(11) NOT NULL AUTO_INCREMENT,\n" +
                 "  username varchar(45) NOT NULL,\n" +
