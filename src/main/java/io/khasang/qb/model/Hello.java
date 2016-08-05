@@ -5,11 +5,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Hello {
-    private Message message;
-
     @Autowired
-    public Hello(Message message) {
+    Message message;
+
+
+    /*public Hello(Message message) {
         this.message = message;
+    }*/
+
+    public Hello() {
+
     }
 
     public String getHello(){
