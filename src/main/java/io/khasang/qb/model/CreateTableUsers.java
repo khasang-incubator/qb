@@ -18,6 +18,7 @@ public class CreateTableUsers {
             jdbcTemplate.execute("CREATE TABLE users (\n" +
                     "    username     VARCHAR(45) NOT NULL,\n" +
                     "    password    VARCHAR (45) NOT NULL,\n" +
+                    "    enabled BOOLEAN NOT NULL DEFAULT 'true', \n" +
                     "    PRIMARY KEY(username)\n" +
                     ");");
             return "users table created";
