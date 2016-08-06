@@ -1,6 +1,5 @@
 package io.khasang.qb.controller;
 
-import io.khasang.qb.model.CreateTableUsers;
 import io.khasang.qb.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +19,7 @@ public class AppController {
 
     @RequestMapping("/confidential/hello")
     public String message(Model model){
-        model.addAttribute("message", "How you receive access to this sercure page!?");
+        model.addAttribute("message", "How you receive access to this secure page!?");
         return "message";
     }
 
