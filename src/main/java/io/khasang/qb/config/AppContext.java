@@ -1,5 +1,7 @@
 package io.khasang.qb.config;
 
+import io.khasang.qb.dao.OfferDAO;
+import io.khasang.qb.dao.impl.OfferDAOImpl;
 import io.khasang.qb.model.CreateTable;
 import io.khasang.qb.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +48,11 @@ public class AppContext {
     @Bean
     public CreateTable createTable(){
         return new CreateTable(jdbcTemplate());
+    }
+
+    @Bean
+    public OfferDAO offerDAO(){
+        return new OfferDAOImpl();
     }
 
     @Bean

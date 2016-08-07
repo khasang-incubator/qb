@@ -1,5 +1,6 @@
 package io.khasang.qb.controller;
 
+import io.khasang.qb.dao.OfferDAO;
 import io.khasang.qb.model.CreateTable;
 import io.khasang.qb.model.Message;
 import io.khasang.qb.model.Stage;
@@ -16,9 +17,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class AppController {
     @Autowired
     Message message;
-
     @Autowired
     CreateTable createTable;
+    @Autowired
+    OfferDAO offerDAO;
 
     @RequestMapping("/")
     public String hello(Model model) {
@@ -36,6 +38,12 @@ public class AppController {
     public String create(Model model){
         model.addAttribute("create", createTable.createTable());
         return "create";
+    }
+
+    @RequestMapping("/krokodil")
+    public String krokodil(Model model){
+        model.addAttribute("krokodil", offerDAO.insertData(2, "krokodil"));
+        return "krokodil";
     }
 
     @RequestMapping(value = {"hello/{name}"}, method = RequestMethod.GET)
