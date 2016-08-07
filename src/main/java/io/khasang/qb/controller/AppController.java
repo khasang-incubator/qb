@@ -10,20 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AppController {
-    @Autowired
-    CreateTable createTable;
 
     @Autowired
     Message message;
 
     @Autowired
-    Hello hello;
+    CreateTable createTable;
 
-    @RequestMapping("/create")
-    public String create(Model model){
-        model.addAttribute("create", createTable.createTable());
-        return "create";
-    }
+    @Autowired
+    Hello hello;
 
     @RequestMapping("/")
     public String hello(Model model) {
@@ -41,6 +36,12 @@ public class AppController {
     public String confidential(Model model){
         model.addAttribute("message", "How do you receive access to this secure page????!!!!");
         return "message";
+    }
+
+    @RequestMapping("/create")
+    public String create(Model model){
+        model.addAttribute("create", createTable.createTable());
+        return "create";
     }
 
 }

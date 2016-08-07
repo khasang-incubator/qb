@@ -13,23 +13,22 @@ public class CreateTable {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    public CreateTable(){
+
+    }
+
     public CreateTable(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public CreateTable(){
-    }
-
     public String createTable(){
         try{
-            jdbcTemplate.execute("DROP TABLE test IF EXISTS ;");
-            jdbcTemplate.execute("CREATE TABLE test (\n" +
-                    "    id     integer,\n" +
-                    "    name    varchar(40),\n" +
-                    "    PRIMARY KEY(id)\n" +
-                    ");");
+            jdbcTemplate.execute("DROP TABLE IF EXISTS test;");
+            jdbcTemplate.execute("CREATE TABLE test(\n" +
+                                "   id SERIAL PRIMARY KEY , \n" +
+                                "   name VARCHAR(40)\n);");
             return "DB created";
-        } catch (Exception e) {
+        } catch (Exception e){
             return e.toString();
         }
     }

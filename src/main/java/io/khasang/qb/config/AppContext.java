@@ -11,27 +11,26 @@ import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+@PropertySource(value = {"classpath:util.properties"})
 @Configuration
-@PropertySource(value = {"classpath.util.properties"})
 public class AppContext {
     @Autowired
     Environment environment;
 
     @Bean
     public CreateTable createTable(){
-        CreateTable createTable = new CreateTable(jdbcTemplate());
-        return createTable;
+        return new CreateTable(jdbcTemplate());
     }
 
     @Bean
-    public JdbcTemplate jdbcTemplate() {
+    public JdbcTemplate jdbcTemplate(){
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
-        jdbcTemplate.setDataSource(dataSourse());
+        jdbcTemplate.setDataSource(dataSource());
         return jdbcTemplate;
     }
 
     @Bean
-    public DriverManagerDataSource dataSourse() {
+    public DriverManagerDataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(environment.getProperty("jdbc.postgresql.driverClass"));
         dataSource.setUrl(environment.getProperty("jdbc.postgresql.url"));
