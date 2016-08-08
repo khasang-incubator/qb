@@ -12,14 +12,13 @@ public class AppController {
     Message message;
 
     @RequestMapping("/")
-    public String index(Model model) {
-        model.addAttribute("hello", "basic spring");
+    public String index() {
         return "index";
     }
 
     @RequestMapping("/confidential/hello")
     public String message(Model model){
-        model.addAttribute("message", "How you receive access to this secure page!?");
+        model.addAttribute("message", "Welcome to this secure page!?");
         return "message";
     }
 
