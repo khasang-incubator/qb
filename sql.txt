@@ -1,8 +1,8 @@
 INSERT INTO users(username,password,enabled)
-VALUES ('admin','123456', true);
+VALUES ('admin','123456', 1);
 
 INSERT INTO users(username,password,enabled)
-VALUES ('user','123456', true);
+VALUES ('user','123456', 1);
 
 INSERT INTO user_roles (username, role)
 VALUES ('user', 'ROLE_USER');
