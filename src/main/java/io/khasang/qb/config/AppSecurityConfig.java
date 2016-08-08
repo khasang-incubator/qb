@@ -49,7 +49,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                     .sessionManagement().maximumSessions(1)
                     .sessionRegistry(sessionRegistry())
                 .and().and()
-                    .logout().invalidateHttpSession(true).deleteCookies();
+                    .logout().invalidateHttpSession(true).deleteCookies()
+                .and()
+                    .exceptionHandling().accessDeniedPage("/Access_Denied");;
     }
 
     @Bean
