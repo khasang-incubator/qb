@@ -6,6 +6,9 @@
     <title>AccessDenied</title>
 </head>
 <body>
+<div id="topMenu">
+    <jsp:include page="topMenu.jsp"/>
+</div><br>
 Dear <strong>${user}</strong>, You are not authorized to access this page
 <a href="<c:url value="/logout" />">Logout</a>
 </body>
