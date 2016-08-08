@@ -19,7 +19,7 @@ public class AppController {
 
     @RequestMapping("/confidential/hello")
     public String message(Model model){
-        model.addAttribute("message", "How you receive access to this secure page!?");
+        model.addAttribute("message", "Welcome to this secured page!");
         return "message";
     }
 

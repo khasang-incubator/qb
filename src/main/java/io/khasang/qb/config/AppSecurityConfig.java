@@ -39,11 +39,17 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/confidential/**").access("hasRole('ROLE_ADMIN')")
-                .and().formLogin().defaultSuccessUrl("/", false)
-                .defaultSuccessUrl("/", false)
-                .and().csrf().disable().
-                sessionManagement().maximumSessions(1).sessionRegistry(sessionRegistry()).and().and()
-                .logout().invalidateHttpSession(true).deleteCookies();
+                .and()
+                    .formLogin()
+                    .loginPage("/login")
+                    .failureUrl("/login?error")
+                    .defaultSuccessUrl("/", false)
+                .and()
+                    .csrf().disable()
+                    .sessionManagement().maximumSessions(1)
+                    .sessionRegistry(sessionRegistry())
+                .and().and()
+                    .logout().invalidateHttpSession(true).deleteCookies();
     }
 
     @Bean
