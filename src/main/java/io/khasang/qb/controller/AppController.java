@@ -13,7 +13,6 @@ public class AppController {
 
     @RequestMapping("/")
     public String index(Model model) {
-        model.addAttribute("hello", "basic spring");
         return "index";
     }
 
