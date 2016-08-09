@@ -17,16 +17,12 @@ import org.springframework.web.servlet.ModelAndView;
 public class AppController {
     @Autowired
     Message message;
+
     @Autowired
     CreateTable createTable;
+
     @Autowired
     OfferDAO offerDAO;
-
-    @Autowired
-    DropTable dropTable;
-
-    @Autowired
-    Insert insert;
 
     @RequestMapping("/")
     public String hello(Model model) {
