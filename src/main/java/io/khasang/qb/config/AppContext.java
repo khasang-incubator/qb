@@ -10,12 +10,27 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 
 @PropertySource(value = {"classpath:util.properties"})
+@PropertySource(value = {"classpath:auth.properties"})
 @Configuration
 public class AppContext {
     @Autowired
     Environment environment;
+
+    @Autowired
+    HibernateConfig hibernateConfig;
+
+    @Bean
+    public UserDetailsService userDetailsService(){
+        JdbcDaoImpl jdbcImpl = new JdbcDaoImpl();
+        jdbcImpl.setDataSource(hibernateConfig.dataSource());
+        jdbcImpl.setUsersByUsernameQuery(environment.getRequiredProperty("userByQuery"));
+        jdbcImpl.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery"));
+        return jdbcImpl;
+    }
 
     @Bean
     public CreateTable createTable(){
