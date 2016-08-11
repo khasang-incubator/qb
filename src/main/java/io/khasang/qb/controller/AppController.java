@@ -46,12 +46,4 @@ public class AppController {
         return "krokodil";
     }
 
-    @RequestMapping(value = {"hello/{name}"}, method = RequestMethod.GET)
-    public ModelAndView hello(@PathVariable("name") String name) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("testview");
-        modelAndView.addObject("crypt", new BCryptPasswordEncoder().encode(name));
-        return modelAndView;
-    }
-
 }

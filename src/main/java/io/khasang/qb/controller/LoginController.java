@@ -26,7 +26,6 @@ public class LoginController {
         return modelAndView;
     }
 
-
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginPage() {
         return "login";
@@ -58,5 +57,6 @@ public class LoginController {
         }
         return userName;
     }
+
 
 }
