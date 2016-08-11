@@ -1,7 +1,6 @@
 package io.khasang.qb.controller;
 
 import io.khasang.qb.dao.OfferDAO;
-import io.khasang.qb.model.CreateTable;
 import io.khasang.qb.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,7 +18,6 @@ public class AppController {
 
     @Autowired
     OfferDAO offerDAO;
->>>>>>> development
 
     @RequestMapping("/")
     public String index() {

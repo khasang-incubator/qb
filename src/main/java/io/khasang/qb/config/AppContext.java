@@ -4,7 +4,6 @@ import io.khasang.qb.model.CreateTableRoles;
 import io.khasang.qb.model.CreateTableUsers;
 import io.khasang.qb.dao.OfferDAO;
 import io.khasang.qb.dao.impl.OfferDAOImpl;
-import io.khasang.qb.model.CreateTable;
 import io.khasang.qb.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -43,8 +42,9 @@ public class AppContext {
     }
 
     @Bean
-    public CreateTableRoles createTableRoles(){
+    public CreateTableRoles createTableRoles() {
         return new CreateTableRoles();
+    }
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -54,7 +54,6 @@ public class AppContext {
         jdbcImpl.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery"));
         return jdbcImpl;
     }
-
 
     @Bean
     public OfferDAO offerDAO(){
@@ -69,15 +68,6 @@ public class AppContext {
         dataSource.setUsername(environment.getProperty("jdbc.postgresql.username"));
         dataSource.setPassword(environment.getProperty("jdbc.postgresql.password"));
         return dataSource;
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        JdbcDaoImpl jdbcDaoImpl = new JdbcDaoImpl();
-        jdbcDaoImpl.setDataSource(dataSource());
-        jdbcDaoImpl.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery"));
-        jdbcDaoImpl.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery"));
-        return jdbcDaoImpl;
     }
 
 }
