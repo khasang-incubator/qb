@@ -2,6 +2,9 @@ package io.khasang.qb.config;
 
 import io.khasang.qb.model.CreateTableRoles;
 import io.khasang.qb.model.CreateTableUsers;
+import io.khasang.qb.dao.OfferDAO;
+import io.khasang.qb.dao.impl.OfferDAOImpl;
+import io.khasang.qb.model.CreateTable;
 import io.khasang.qb.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -18,6 +21,9 @@ import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 public class AppContext {
     @Autowired
     Environment environment;
+
+    @Autowired
+    HibernateConfig hibernateConfig;
 
     @Bean
     public Message message() {
@@ -39,6 +45,20 @@ public class AppContext {
     @Bean
     public CreateTableRoles createTableRoles(){
         return new CreateTableRoles();
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        JdbcDaoImpl jdbcImpl = new JdbcDaoImpl();
+        jdbcImpl.setDataSource(hibernateConfig.dataSource());
+        jdbcImpl.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery"));
+        jdbcImpl.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery"));
+        return jdbcImpl;
+    }
+
+
+    @Bean
+    public OfferDAO offerDAO(){
+        return new OfferDAOImpl();
     }
 
     @Bean

@@ -12,7 +12,6 @@ import org.springframework.security.core.session.SessionRegistryImpl;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import javax.sql.DataSource;
 
 @Configuration
@@ -25,7 +24,6 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserDetailsService userDetailsService;
 
-    @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
@@ -58,4 +56,10 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     public SessionRegistry sessionRegistry() {
         return new SessionRegistryImpl();
     }
+
+    @Bean
+    public SessionRegistry sessionRegistry() {
+        return new SessionRegistryImpl();
+    }
+
 }
