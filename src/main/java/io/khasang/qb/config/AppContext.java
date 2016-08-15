@@ -1,9 +1,11 @@
 package io.khasang.qb.config;
 
+import io.khasang.qb.config.db.HibernateConfig;
 import io.khasang.qb.dao.OfferDAO;
 import io.khasang.qb.dao.impl.OfferDAOImpl;
 import io.khasang.qb.model.CreateTable;
 import io.khasang.qb.model.Message;
+import io.khasang.qb.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,6 +39,11 @@ public class AppContext {
     }
 
     @Bean
+    QuestionService questionService() {
+        return new QuestionService();
+    }
+
+    @Bean
     public UserDetailsService userDetailsService() {
         JdbcDaoImpl jdbcImpl = new JdbcDaoImpl();
         jdbcImpl.setDataSource(hibernateConfig.dataSource());
@@ -46,12 +53,12 @@ public class AppContext {
     }
 
     @Bean
-    public CreateTable createTable(){
+    public CreateTable createTable() {
         return new CreateTable(jdbcTemplate());
     }
 
     @Bean
-    public OfferDAO offerDAO(){
+    public OfferDAO offerDAO() {
         return new OfferDAOImpl();
     }
 

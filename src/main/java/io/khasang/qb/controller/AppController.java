@@ -36,6 +36,11 @@ public class AppController {
         return "message";
     }
 
+    @RequestMapping("/rest")
+    public String rest() {
+        return "rest";
+    }
+
     @RequestMapping("/create")
     public String create(Model model){
         model.addAttribute("create", createTable.createTable());
