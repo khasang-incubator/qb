@@ -25,9 +25,11 @@ public class Question {
     private String answer4;
 
     @ManyToOne
+    @JoinColumn(name = "difficultId")
     private Difficult difficult;
 
     @ManyToOne
+    @JoinColumn(name = "themetId")
     private Theme theme;
 
     @OneToMany(mappedBy = "question")

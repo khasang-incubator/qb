@@ -1,9 +1,8 @@
 package io.khasang.qb.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class UserStatistic {
@@ -18,6 +17,9 @@ public class UserStatistic {
     private int rightAnswersAmount;
 
     private double averageTime;
+
+    @OneToOne(mappedBy = "userStatistic")
+    private User user;
 
     public UserStatistic() {
     }
@@ -60,5 +62,13 @@ public class UserStatistic {
 
     public void setAverageTime(double averageTime) {
         this.averageTime = averageTime;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

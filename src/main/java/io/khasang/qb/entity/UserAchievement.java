@@ -1,5 +1,7 @@
 package io.khasang.qb.entity;
 
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -10,11 +12,15 @@ public class UserAchievement {
     private int id;
 
     @ManyToOne
+    @JoinColumn(name = "userId")
     private User user;
 
     @ManyToOne
+    @JoinColumn(name = "achievementId")
     private Achievement achievement;
 
+    @Column
+    @Type(type="timestamp")
     private Date received;
 
     public UserAchievement() {

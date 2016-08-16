@@ -9,9 +9,11 @@ public class QuestionStatistic {
     private int id;
 
     @ManyToOne
+    @JoinColumn(name = "userId")
     private User user;
 
     @ManyToOne
+    @JoinColumn(name = "questionId")
     private Question question;
 
     private int answersCount;

@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "Users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,9 +31,11 @@ public class User {
     private String email;
 
     @ManyToOne
+    @JoinColumn(name = "roleId")
     private Role role;
 
     @OneToOne
+    @JoinColumn(name = "userStatisticId")
     private UserStatistic userStatistic;
 
     @OneToMany(mappedBy = "user")
