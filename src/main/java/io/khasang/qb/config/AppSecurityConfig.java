@@ -49,7 +49,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().and()
                     .logout().invalidateHttpSession(true).deleteCookies()
                 .and()
-                    .exceptionHandling().accessDeniedPage("/Access_Denied");;
+                    .exceptionHandling().accessDeniedPage("/Access_Denied");;                   
     }
 
     @Bean

@@ -2,9 +2,11 @@ package io.khasang.qb.config;
 
 import io.khasang.qb.model.CreateTableRoles;
 import io.khasang.qb.model.CreateTableUsers;
+import io.khasang.qb.config.db.HibernateConfig;
 import io.khasang.qb.dao.OfferDAO;
 import io.khasang.qb.dao.impl.OfferDAOImpl;
 import io.khasang.qb.model.Message;
+import io.khasang.qb.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,6 +46,11 @@ public class AppContext {
     @Bean
     public CreateTableRoles createTableRoles() {
         return new CreateTableRoles();
+    }
+
+    @Bean
+    QuestionService questionService() {
+        return new QuestionService();
     }
 
     @Bean
