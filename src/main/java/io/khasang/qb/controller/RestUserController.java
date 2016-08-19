@@ -59,7 +59,6 @@ public class RestUserController {
                 System.out.println("jsonToken = " + jsonToken);
             }
 
-
             return question;
         } catch (Exception e) {
             response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

@@ -3,7 +3,7 @@ package io.khasang.qb.controller;
 import io.khasang.qb.dao.OfferDAO;
 import io.khasang.qb.model.CreateTable;
 import io.khasang.qb.model.Message;
-import io.khasang.qb.model.Stage;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -15,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AppController {
+    private static final Logger log = Logger.getLogger(AppController.class);
+
     @Autowired
     Message message;
 
@@ -27,11 +29,12 @@ public class AppController {
     @RequestMapping("/")
     public String hello(Model model) {
         model.addAttribute("hello", message.getHello());
+        log.info(message.getHello());
         return "hello";
     }
 
     @RequestMapping("/confidential/hello")
-    public String message(Model model){
+    public String message(Model model) {
         model.addAttribute("message", "How you receive access to this sercure page!?");
         return "message";
     }
@@ -42,13 +45,13 @@ public class AppController {
     }
 
     @RequestMapping("/create")
-    public String create(Model model){
+    public String create(Model model) {
         model.addAttribute("create", createTable.createTable());
         return "create";
     }
 
     @RequestMapping("/krokodil")
-    public String krokodil(Model model){
+    public String krokodil(Model model) {
         model.addAttribute("krokodil", offerDAO.insertData(2, "krokodil"));
         return "krokodil";
     }
