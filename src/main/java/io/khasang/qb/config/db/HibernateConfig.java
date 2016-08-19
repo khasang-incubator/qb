@@ -1,6 +1,5 @@
 package io.khasang.qb.config.db;
 
-import io.khasang.qb.dao.QuestionDAO;
 import io.khasang.qb.dao.impl.QuestionDAOImpl;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
