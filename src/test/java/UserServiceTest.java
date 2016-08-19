@@ -1,5 +1,4 @@
-package java;
-
+import io.khasang.qb.entity.User;
 import org.junit.*;
 
 public class UserServiceTest {
@@ -8,4 +7,5 @@ public class UserServiceTest {
         User user = UserService.getUserById(2);
         Assert.assertEquals("Петров", user.getName());
     }
+
 }
