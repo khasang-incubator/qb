@@ -3,7 +3,6 @@ package io.khasang.qb.config;
 import io.khasang.qb.config.db.HibernateConfig;
 import io.khasang.qb.dao.OfferDAO;
 import io.khasang.qb.dao.impl.OfferDAOImpl;
-import io.khasang.qb.model.CreateTable;
 import io.khasang.qb.model.Message;
 import io.khasang.qb.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,11 +49,6 @@ public class AppContext {
         jdbcImpl.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery"));
         jdbcImpl.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery"));
         return jdbcImpl;
-    }
-
-    @Bean
-    public CreateTable createTable() {
-        return new CreateTable(jdbcTemplate());
     }
 
     @Bean

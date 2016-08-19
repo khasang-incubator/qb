@@ -1,7 +1,6 @@
 package io.khasang.qb.controller;
 
 import io.khasang.qb.dao.OfferDAO;
-import io.khasang.qb.model.CreateTable;
 import io.khasang.qb.model.Message;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +20,6 @@ public class AppController {
     Message message;
 
     @Autowired
-    CreateTable createTable;
-
-    @Autowired
     OfferDAO offerDAO;
 
     @RequestMapping("/")
@@ -31,23 +27,6 @@ public class AppController {
         model.addAttribute("hello", message.getHello());
         log.info(message.getHello());
         return "hello";
-    }
-
-    @RequestMapping("/confidential/hello")
-    public String message(Model model) {
-        model.addAttribute("message", "How you receive access to this sercure page!?");
-        return "message";
-    }
-
-    @RequestMapping("/rest")
-    public String rest() {
-        return "rest";
-    }
-
-    @RequestMapping("/create")
-    public String create(Model model) {
-        model.addAttribute("create", createTable.createTable());
-        return "create";
     }
 
     @RequestMapping("/krokodil")
