@@ -2,7 +2,7 @@ package io.khasang.qb.config;
 
 import io.khasang.qb.config.db.HibernateConfig;
 import io.khasang.qb.model.Message;
-import io.khasang.qb.service.QuestionService;
+import io.khasang.qb.service.PizzaService;
 import io.khasang.qb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -35,8 +35,8 @@ public class AppContext {
     }
 
     @Bean
-    QuestionService questionService() {
-        return new QuestionService();
+    PizzaService PizzaService() {
+        return new PizzaService();
     }
 
     @Bean
