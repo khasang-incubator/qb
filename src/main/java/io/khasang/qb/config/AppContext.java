@@ -1,6 +1,15 @@
 package io.khasang.qb.config;
 
+
 import io.khasang.qb.model.*;
+
+import io.khasang.qb.config.db.HibernateConfig;
+import io.khasang.qb.dao.OfferDAO;
+import io.khasang.qb.dao.impl.OfferDAOImpl;
+import io.khasang.qb.model.CreateTable;
+import io.khasang.qb.model.Message;
+import io.khasang.qb.service.QuestionService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,12 +17,18 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 
 @Configuration
 @PropertySource(value = {"classpath:util.properties"})
+@PropertySource(value = {"classpath:auth.properties"})
 public class AppContext {
     @Autowired
     Environment environment;
+
+    @Autowired
+    HibernateConfig hibernateConfig;
 
     @Bean
     public Message message() {
@@ -28,11 +43,26 @@ public class AppContext {
     }
 
     @Bean
-    public CreateTable createTable(){
+    QuestionService questionService() {
+        return new QuestionService();
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        JdbcDaoImpl jdbcImpl = new JdbcDaoImpl();
+        jdbcImpl.setDataSource(hibernateConfig.dataSource());
+        jdbcImpl.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery"));
+        jdbcImpl.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery"));
+        return jdbcImpl;
+    }
+
+    @Bean
+    public CreateTable createTable() {
         return new CreateTable(jdbcTemplate());
     }
 
     @Bean
+
     public InsertUser insertUser(){
         return new InsertUser(jdbcTemplate());
     }
@@ -45,6 +75,10 @@ public class AppContext {
     @Bean
     public UpdateUser updateUser(){
         return new UpdateUser(jdbcTemplate());
+=======
+    public OfferDAO offerDAO() {
+        return new OfferDAOImpl();
+
     }
 
     @Bean
