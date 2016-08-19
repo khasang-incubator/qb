@@ -44,6 +44,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<QuestionStatistic> questionStatisticSet = new HashSet<>();
 
+    @OneToMany(mappedBy = "user")
+    private Set<Sales> salesSet = new HashSet<>();
+
     public User() {
     }
 

@@ -1,7 +1,9 @@
 package io.khasang.qb.config;
 
 import io.khasang.qb.config.db.HibernateConfig;
+import io.khasang.qb.dao.DrinkTypeDao;
 import io.khasang.qb.dao.OfferDAO;
+import io.khasang.qb.dao.impl.DrinkTypeDaoImpl;
 import io.khasang.qb.dao.impl.OfferDAOImpl;
 import io.khasang.qb.model.CreateTable;
 import io.khasang.qb.model.Message;
@@ -60,6 +62,11 @@ public class AppContext {
     @Bean
     public OfferDAO offerDAO() {
         return new OfferDAOImpl();
+    }
+
+    @Bean
+    public DrinkTypeDao drinkTypeDao(){
+        return new DrinkTypeDaoImpl();
     }
 
     @Bean
