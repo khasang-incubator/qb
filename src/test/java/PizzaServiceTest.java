@@ -3,9 +3,10 @@ import org.junit.*;
 import org.junit.Test;
 
 public class PizzaServiceTest {
+    PizzaService pizzaService;
     @Test
     public void selectPizzaById() {
-        Pizza pizza = PizzaService.getPizzaById(5);
+        Pizza pizza = pizzaService.getPizzaById(5);
         Assert.assertEquals("Острая", pizza.getName());
     }
 
