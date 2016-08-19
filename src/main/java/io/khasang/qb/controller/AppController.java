@@ -1,10 +1,8 @@
 package io.khasang.qb.controller;
 
-import io.khasang.qb.dao.OfferDAO;
 import io.khasang.qb.model.Message;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,8 +17,8 @@ public class AppController {
     @Autowired
     Message message;
 
-    @Autowired
-    OfferDAO offerDAO;
+//    @Autowired
+//    OfferDAO offerDAO;
 
     @RequestMapping("/")
     public String hello(Model model) {
@@ -29,18 +27,11 @@ public class AppController {
         return "hello";
     }
 
-    @RequestMapping("/krokodil")
-    public String krokodil(Model model) {
-        model.addAttribute("krokodil", offerDAO.insertData(2, "krokodil"));
-        return "krokodil";
-    }
+//    @RequestMapping("/krokodil")
+//    public String krokodil(Model model) {
+//        model.addAttribute("krokodil", offerDAO.insertData(2, "krokodil"));
+//        return "krokodil";
+//    }
 
-    @RequestMapping(value = {"hello/{name}"}, method = RequestMethod.GET)
-    public ModelAndView hello(@PathVariable("name") String name) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("testview");
-        modelAndView.addObject("crypt", new BCryptPasswordEncoder().encode(name));
-        return modelAndView;
-    }
 
 }

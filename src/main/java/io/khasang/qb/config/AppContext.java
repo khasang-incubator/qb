@@ -1,8 +1,6 @@
 package io.khasang.qb.config;
 
 import io.khasang.qb.config.db.HibernateConfig;
-import io.khasang.qb.dao.OfferDAO;
-import io.khasang.qb.dao.impl.OfferDAOImpl;
 import io.khasang.qb.model.Message;
 import io.khasang.qb.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +10,6 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 
 @Configuration
 @PropertySource(value = {"classpath:util.properties"})
@@ -42,19 +38,19 @@ public class AppContext {
         return new QuestionService();
     }
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        JdbcDaoImpl jdbcImpl = new JdbcDaoImpl();
-        jdbcImpl.setDataSource(hibernateConfig.dataSource());
-        jdbcImpl.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery"));
-        jdbcImpl.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery"));
-        return jdbcImpl;
-    }
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        JdbcDaoImpl jdbcImpl = new JdbcDaoImpl();
+//        jdbcImpl.setDataSource(hibernateConfig.dataSource());
+//        jdbcImpl.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery"));
+//        jdbcImpl.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery"));
+//        return jdbcImpl;
+//    }
 
-    @Bean
-    public OfferDAO offerDAO() {
-        return new OfferDAOImpl();
-    }
+//    @Bean
+//    public OfferDAO offerDAO() {
+//        return new OfferDAOImpl();
+//    }
 
     @Bean
     public DriverManagerDataSource dataSource() {

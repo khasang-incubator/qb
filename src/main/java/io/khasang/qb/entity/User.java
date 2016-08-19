@@ -1,11 +1,6 @@
 package io.khasang.qb.entity;
 
-import org.hibernate.validator.constraints.Email;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "Users")
@@ -15,34 +10,11 @@ public class User {
     private int id;
 
     @Column
-    @NotNull
-    private String login;
-
-    @Column
-    @NotNull
-    private String password;
-
-    @Column
     private String name;
 
-    @Column
-    @NotNull
-    @Email
-    private String email;
-
-    @ManyToOne
-    @JoinColumn(name = "roleId")
-    private Role role;
-
     @OneToOne
-    @JoinColumn(name = "userStatisticId")
-    private UserStatistic userStatistic;
-
-    @OneToMany(mappedBy = "user")
-    private Set<UserAchievement> userAchievementSet = new HashSet<>();
-
-    @OneToMany(mappedBy = "user")
-    private Set<QuestionStatistic> questionStatisticSet = new HashSet<>();
+    @JoinColumn(name = "pizza_id")
+    private Pizza pizza;
 
     public User() {
     }
@@ -55,22 +27,6 @@ public class User {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getName() {
         return name;
     }
@@ -79,43 +35,11 @@ public class User {
         this.name = name;
     }
 
-    public String getEmail() {
-        return email;
+    public Pizza getPizza() {
+        return pizza;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    public UserStatistic getUserStatistic() {
-        return userStatistic;
-    }
-
-    public void setUserStatistic(UserStatistic userStatistic) {
-        this.userStatistic = userStatistic;
-    }
-
-    public Set<UserAchievement> getUserAchievementSet() {
-        return userAchievementSet;
-    }
-
-    public void setUserAchievementSet(Set<UserAchievement> userAchievementSet) {
-        this.userAchievementSet = userAchievementSet;
-    }
-
-    public Set<QuestionStatistic> getQuestionStatisticSet() {
-        return questionStatisticSet;
-    }
-
-    public void setQuestionStatisticSet(Set<QuestionStatistic> questionStatisticSet) {
-        this.questionStatisticSet = questionStatisticSet;
+    public void setPizza(Pizza pizza) {
+        this.pizza = pizza;
     }
 }
