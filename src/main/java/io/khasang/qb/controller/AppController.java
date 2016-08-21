@@ -1,13 +1,9 @@
 package io.khasang.qb.controller;
 
-
-import io.khasang.qb.model.*;
-=======
 import io.khasang.qb.dao.OfferDAO;
 import io.khasang.qb.model.CreateTable;
 import io.khasang.qb.model.Message;
 import org.apache.log4j.Logger;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -27,15 +23,6 @@ public class AppController {
     CreateTable createTable;
     @Autowired
     OfferDAO offerDAO;
-
-    @Autowired
-    InsertUser insertUser;
-
-    @Autowired
-    DeleteUser deleteUser;
-
-    @Autowired
-    UpdateUser updateUser;
 
     @RequestMapping("/")
     public String hello(Model model) {
@@ -61,24 +48,6 @@ public class AppController {
         return "create";
     }
 
-
-    @RequestMapping("/insert")
-    public String insertUser(Model model){
-        model.addAttribute("insert", insertUser.insertUser());
-        return "insert";
-    }
-
-    @RequestMapping("/delete")
-    public String deleteUser(Model model){
-        model.addAttribute("delete", deleteUser.deleteUser());
-        return "delete";
-    }
-
-    @RequestMapping("/update")
-    public String updateUser(Model model){
-        model.addAttribute("update", updateUser.updateUser());
-        return "update";
-
     @RequestMapping("/krokodil")
     public String krokodil(Model model) {
         model.addAttribute("krokodil", offerDAO.insertData(2, "krokodil"));
@@ -91,7 +60,6 @@ public class AppController {
         modelAndView.setViewName("testview");
         modelAndView.addObject("crypt", new BCryptPasswordEncoder().encode(name));
         return modelAndView;
-
     }
 
 }
