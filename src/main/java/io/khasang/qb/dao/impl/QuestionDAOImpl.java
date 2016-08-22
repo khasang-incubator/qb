@@ -8,7 +8,6 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
@@ -21,7 +20,7 @@ public class QuestionDAOImpl implements QuestionDAO {
     }
 
     @Override
-        public void addQuestion(Question question) {
+    public void addQuestion(Question question) {
             sessionFactory.getCurrentSession().save(question);
         }
 

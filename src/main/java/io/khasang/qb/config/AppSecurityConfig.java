@@ -35,7 +35,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.userDetailsService(userDetailsService())
+                .authorizeRequests()
                 .antMatchers("/confidential/**").access("hasRole('ROLE_ADMIN')")
                 .and()
                     .formLogin()
@@ -49,7 +50,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and().and()
                     .logout().invalidateHttpSession(true).deleteCookies()
                 .and()
-                    .exceptionHandling().accessDeniedPage("/Access_Denied");;                   
+                    .exceptionHandling().accessDeniedPage("/Access_Denied");
     }
 
     @Bean

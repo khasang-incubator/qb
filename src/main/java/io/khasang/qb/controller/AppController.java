@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class AppController {
-    private static final Logger log = Logger.getLogger(AppController.class);
+//    private static final Logger log = Logger.getLogger(AppController.class);
 
     @Autowired
     Message message;

@@ -1,5 +1,6 @@
 package io.khasang.qb.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class LoginController {
+//    private static final Logger log = Logger.getLogger(LoginController.class);
 
     @RequestMapping(value = {"hello/{name}"}, method = RequestMethod.GET)
     public ModelAndView hello(@PathVariable("name") String name) {

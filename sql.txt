@@ -1,11 +1,24 @@
 INSERT INTO users(username,password,enabled)
-VALUES ('admin','123456', 1);
+VALUES ('admin','$2a$10$VVNq5bma81K7wjOL1XvS1uNZ.v27zb2RxzN0Z3B.ZDdEQbG//mkfu', 1);
 
 INSERT INTO users(username,password,enabled)
-VALUES ('user','123456', 1);
+VALUES ('user','$2a$10$uFWBpG10ryzrIcf9QV2XJ.mNSE5oyQZR4RghdntNwFI7JcFv5fy0y', 1);
 
 INSERT INTO user_roles (username, role)
 VALUES ('user', 'ROLE_USER');
 
 INSERT INTO user_roles (username, role)
 VALUES ('admin', 'ROLE_ADMIN');
+
+
+INSERT INTO users(login,password,name,email)
+VALUES ('admin','$2a$10$VVNq5bma81K7wjOL1XvS1uNZ.v27zb2RxzN0Z3B.ZDdEQbG//mkfu','admin','admin@admin');
+
+INSERT INTO users(login,password,name,email)
+VALUES ('user','$2a$10$z4XhI84CxJo1lFALhOJQYOSzH85p/mauN6VLFLpG15dBQVvNcjZMC','user','user@user');
+
+INSERT INTO role (role)
+VALUES ('ROLE_USER');
+
+INSERT INTO role (role)
+VALUES ('ROLE_ADMIN');
