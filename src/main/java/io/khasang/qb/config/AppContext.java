@@ -31,6 +31,7 @@ public class AppContext {
         return new Message("Hello world");
     }
 
+
     @Bean
     public JdbcTemplate jdbcTemplate() {
         JdbcTemplate jdbcTemplate = new JdbcTemplate();
