@@ -23,6 +23,9 @@ public class    User {
     private String password;
 
     @Column
+    private int enabled;
+
+    @Column
     private String name;
 
     @Column
@@ -117,5 +120,13 @@ public class    User {
 
     public void setQuestionStatisticSet(Set<QuestionStatistic> questionStatisticSet) {
         this.questionStatisticSet = questionStatisticSet;
+    }
+
+    public int getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
     }
 }
