@@ -2,17 +2,14 @@ package io.khasang.qb.controller;
 
 import io.khasang.qb.dao.OfferDAO;
 import io.khasang.qb.model.Message;
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@ComponentScan("io.khasang.qb.*")
 public class AppController {
 //    private static final Logger log = Logger.getLogger(AppController.class);
 

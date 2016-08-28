@@ -1,10 +1,10 @@
 package io.khasang.qb.config;
 
-import io.khasang.qb.model.CreateTableRoles;
-import io.khasang.qb.model.CreateTableUsers;
 import io.khasang.qb.config.db.HibernateConfig;
 import io.khasang.qb.dao.OfferDAO;
 import io.khasang.qb.dao.impl.OfferDAOImpl;
+import io.khasang.qb.model.CreateTableRoles;
+import io.khasang.qb.model.CreateTableUsers;
 import io.khasang.qb.model.Message;
 import io.khasang.qb.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +25,11 @@ public class AppContext {
 
     @Autowired
     HibernateConfig hibernateConfig;
+
+    @Bean
+    public OfferDAO offerDAO(){
+        return new OfferDAOImpl();
+    }
 
     @Bean
     public Message message() {
@@ -60,11 +65,6 @@ public class AppContext {
         jdbcImpl.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery"));
         jdbcImpl.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery"));
         return jdbcImpl;
-    }
-
-    @Bean
-    public OfferDAO offerDAO(){
-        return new OfferDAOImpl();
     }
 
     @Bean

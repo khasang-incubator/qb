@@ -8,12 +8,14 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.List;
 
 @Repository
+@Component
 public class OfferDAOImpl implements OfferDAO {
     @Autowired
     SessionFactory sessionFactory;
