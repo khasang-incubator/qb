@@ -3,6 +3,7 @@ package io.khasang.qb.controller;
 import io.khasang.qb.dao.OfferDAO;
 import io.khasang.qb.model.CreateTable;
 import io.khasang.qb.model.Message;
+import io.khasang.qb.service.QLoader;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.io.IOException;
 
 @Controller
 public class AppController {
@@ -23,6 +26,8 @@ public class AppController {
     CreateTable createTable;
     @Autowired
     OfferDAO offerDAO;
+    @Autowired
+    QLoader qLoader;
 
     @RequestMapping("/")
     public String hello(Model model) {
@@ -62,4 +67,16 @@ public class AppController {
         return modelAndView;
     }
 
+    @RequestMapping("/qloader")
+    public String qloader(Model model) {
+        String info = null;
+        try {
+            info = qLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            info = "Что-то пошло не так ... Вопросы не добавлены =( ";
+        }
+        model.addAttribute("hello", info);
+        return "hello";
+    }
 }
