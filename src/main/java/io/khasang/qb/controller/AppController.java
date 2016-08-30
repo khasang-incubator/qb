@@ -3,6 +3,7 @@ package io.khasang.qb.controller;
 import io.khasang.qb.dao.OfferDAO;
 import io.khasang.qb.model.CreateTable;
 import io.khasang.qb.model.Message;
+import io.khasang.qb.service.QLoader;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,6 +24,8 @@ public class AppController {
     CreateTable createTable;
     @Autowired
     OfferDAO offerDAO;
+    @Autowired
+    QLoader qLoader;
 
     @RequestMapping("/")
     public String hello(Model model) {
@@ -62,4 +65,10 @@ public class AppController {
         return modelAndView;
     }
 
+    @RequestMapping("/qloader")
+    public String qloader(Model model) {
+        String info = qLoader.load();
+        model.addAttribute("hello", info);
+        return "hello";
+    }
 }
