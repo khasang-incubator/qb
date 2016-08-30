@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
+
 @Controller
 public class AppController {
     private static final Logger log = Logger.getLogger(AppController.class);
@@ -67,7 +69,13 @@ public class AppController {
 
     @RequestMapping("/qloader")
     public String qloader(Model model) {
-        String info = qLoader.load();
+        String info = null;
+        try {
+            info = qLoader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+            info = "Что-то пошло не так ... Вопросы не добавлены =( ";
+        }
         model.addAttribute("hello", info);
         return "hello";
     }

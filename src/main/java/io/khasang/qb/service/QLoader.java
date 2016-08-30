@@ -17,53 +17,16 @@ public class QLoader {
     public QLoader() {
     }
 
-    public String load(){
-        InputStream in = QLoader.class.getClassLoader().getResourceAsStream("questions.xls");
-        HSSFWorkbook wb = null;
-        try {
-            wb = new HSSFWorkbook(in);
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "Что-то пошло не так ... Вопросы не загрузились.";
-        }
+    public String load() throws IOException {
+        HSSFWorkbook wb = readXLSFile();
         Sheet sheet = wb.getSheetAt(0);
         Iterator<Row> it = sheet.iterator();
         int count = 0;
         while (it.hasNext()) {
             Row row = it.next();
-            Iterator<Cell> cells = row.iterator();
-            Question question = new Question();
-            int numberOfColumn = 0;
-            while (cells.hasNext()) {
-                Cell cell = cells.next();
-
-
-                String text =returnStringFromCell(cell);
-                System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" + text);
-
-                switch (numberOfColumn) {
-                    case 0:
-                        question.setQuestion(text);
-                        break;
-                    case 1:
-                        question.setAnswer1(text);
-                        break;
-                    case 2:
-                        question.setAnswer2(text);
-                        break;
-                    case 3:
-                        question.setAnswer3(text);
-                        break;
-                    case 4:
-                        question.setAnswer4(text);
-                        break;
-                    default:
-                        break;
-                }
-                numberOfColumn++;
-            }
-            count++;
+            Question question = questionFromRow(row);
             questionDAO.addQuestion(question);
+            count++;
         }
         return "А вот столько вопросов мы добавили - " + count;
     }
@@ -78,5 +41,42 @@ public class QLoader {
             default:
                 return null;
         }
+    }
+
+    private Question questionFromRow(Row row) {
+        Iterator<Cell> cells = row.iterator();
+        Question question = new Question();
+        int numberOfColumn = 0;
+        while (cells.hasNext()) {
+            Cell cell = cells.next();
+            String text =returnStringFromCell(cell);
+            switch (numberOfColumn) {
+                case 0:
+                    question.setQuestion(text);
+                    break;
+                case 1:
+                    question.setAnswer1(text);
+                    break;
+                case 2:
+                    question.setAnswer2(text);
+                    break;
+                case 3:
+                    question.setAnswer3(text);
+                    break;
+                case 4:
+                    question.setAnswer4(text);
+                    break;
+                default:
+                    break;
+            }
+            numberOfColumn++;
+        }
+        return question;
+    }
+
+    private HSSFWorkbook readXLSFile() throws IOException {
+        InputStream in = QLoader.class.getClassLoader().getResourceAsStream("questions.xls");
+        HSSFWorkbook wb = new HSSFWorkbook(in);
+        return wb;
     }
 }
