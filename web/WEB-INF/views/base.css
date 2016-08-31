@@ -1,0 +1,13 @@
+header {
+    background-color: #f8f8f8;
+}
+
+header ul {
+    margin: 0;
+}
+
+header a, header li{
+    padding: 1.4rem 0;
+    color: #777;
+    font-weight: bold;
+}
