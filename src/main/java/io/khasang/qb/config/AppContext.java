@@ -5,6 +5,7 @@ import io.khasang.qb.dao.OfferDAO;
 import io.khasang.qb.dao.impl.OfferDAOImpl;
 import io.khasang.qb.model.CreateTable;
 import io.khasang.qb.model.Message;
+import io.khasang.qb.service.QLoader;
 import io.khasang.qb.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -25,6 +26,11 @@ public class AppContext {
 
     @Autowired
     HibernateConfig hibernateConfig;
+
+    @Bean
+    public QLoader qLoader() {
+        return new QLoader();
+    }
 
     @Bean
     public Message message() {
@@ -53,12 +59,12 @@ public class AppContext {
     }
 
     @Bean
-    public CreateTable createTable(){
+    public CreateTable createTable() {
         return new CreateTable(jdbcTemplate());
     }
 
     @Bean
-    public OfferDAO offerDAO(){
+    public OfferDAO offerDAO() {
         return new OfferDAOImpl();
     }
 

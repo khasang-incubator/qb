@@ -35,9 +35,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/confidential/**").access("hasRole('ADMIN')")
                 .antMatchers("/secure/**").access("hasRole('SUPER_ADMIN')")
                 .and().formLogin().defaultSuccessUrl("/", false)
-                .defaultSuccessUrl("/", false)
-                .and().csrf().disable()
-                .sessionManagement().maximumSessions(1).sessionRegistry(sessionRegistry()).and().and()
+                .and().csrf().disable().
+                sessionManagement().maximumSessions(1).sessionRegistry(sessionRegistry()).and().and()
                 .logout().invalidateHttpSession(true).deleteCookies();
     }
 
@@ -45,4 +44,5 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     public SessionRegistry sessionRegistry() {
         return new SessionRegistryImpl();
     }
+
 }

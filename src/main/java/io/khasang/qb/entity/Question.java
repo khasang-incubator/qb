@@ -8,20 +8,26 @@ import java.util.Set;
 @Table(name = "question")
 public class Question {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
+    @Column(length = 1255)
     private String question;
 
+    @Column(length = 1255)
     private String correectAnswers;
 
+    @Column(length = 1255)
     private String answer1;
 
+    @Column(length = 1255)
     private String answer2;
 
+    @Column(length = 1255)
     private String answer3;
 
+    @Column(length = 1255)
     private String answer4;
 
     @ManyToOne

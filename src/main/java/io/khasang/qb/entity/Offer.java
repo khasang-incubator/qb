@@ -1,6 +1,7 @@
 package io.khasang.qb.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
@@ -60,5 +61,4 @@ public class Offer {
     public void setPayment_id(int payment_id) {
         this.payment_id = payment_id;
     }
-
 }
