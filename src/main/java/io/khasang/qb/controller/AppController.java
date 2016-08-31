@@ -1,5 +1,6 @@
 package io.khasang.qb.controller;
 
+import io.khasang.qb.dao.OfferDAO;
 import io.khasang.qb.model.CreateTable;
 import io.khasang.qb.model.Message;
 import io.khasang.qb.model.Stage;
@@ -20,6 +21,9 @@ public class AppController {
     @Autowired
     CreateTable createTable;
 
+    @Autowired
+    OfferDAO offerDAO;
+
     @RequestMapping("/")
     public String hello(Model model) {
         model.addAttribute("hello", message.getHello());
@@ -32,10 +36,21 @@ public class AppController {
         return "message";
     }
 
+    @RequestMapping("/rest")
+    public String rest() {
+        return "rest";
+    }
+
     @RequestMapping("/create")
     public String create(Model model){
         model.addAttribute("create", createTable.createTable());
         return "create";
+    }
+
+    @RequestMapping("/krokodil")
+    public String krokodil(Model model){
+        model.addAttribute("krokodil", offerDAO.insertData(2, "krokodil"));
+        return "krokodil";
     }
 
     @RequestMapping(value = {"hello/{name}"}, method = RequestMethod.GET)
