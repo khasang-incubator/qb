@@ -1,0 +1,150 @@
+*{
+	box-sizing: border-box;
+}
+body{
+	color:white;
+	font-size: 30px;
+}
+
+.row:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.row { display: inline-block; }
+/* start commented backslash hack \*/
+* html .row { height: 1%; }
+.row { display: block; }
+/* close commented backslash hack */
+
+.wrapper{
+	/*width:1024px ;*/
+	/*margin: auto;*/
+}
+.header {
+
+}
+
+.inner-header{
+		background: #4d7996;
+		height: 200px;
+}
+
+.content {
+
+		width: 80%;
+		float:right;
+}
+
+.inner-content{
+		background: #7194ab;
+		min-height: 500px;
+}
+
+.sidebar {
+
+		width: 20%;
+		float:left;
+}
+
+.inner-sidebar{
+		background: #738b9b;
+		min-height: 500px;
+}
+.footer{
+
+}
+
+.inner-footer{
+    position: relative;
+    background: #4d7996;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.container {
+    width: 750px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.social-icons {
+    font-size: 0;
+    line-height: 0;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    vertical-align: top;
+}
+
+.social-icons li {
+    display: inline-block;
+    margin: 22px 7px 7px 0;
+    border: 0;
+}
+
+
+	a.vk-icon {
+	display: block;
+	width:40px;
+	height: 40px;
+	background: url(./icons/vk-icon-small.png);
+	background-size:40px 40px;
+	background-repeat: no-repeat;
+}
+
+	a.vk-icon:hover{
+		background-image: url(./icons/vk-icon-hover.png);
+	}
+
+	a.github-icon{
+	display: block;
+	width:40px;
+	height: 40px;
+	background-image: url(./icons/github-icon.png);
+	background-size:40px 40px;
+	background-repeat: no-repeat;
+	}
+	a.github-icon:hover{
+	background-image: url(./icons/github-icon-hover.png);
+	}
+
+	a.facebook-icon{
+	display: block;
+	width:40px;
+	height: 40px;
+	background-image: url(./icons/facebook-icon-small.png);
+	background-size:40px 40px;
+	background-repeat: no-repeat;
+
+}
+	a.facebook-icon:hover{
+	background-image: url(./icons/facebook-icon-hover.png);
+	}
+
+.names-container ,.copyright {
+	line-height: 1.5;
+	font-family: arial;
+	font-size: 13px;
+	font-weight: bold;
+	color: #d0dfe9;
+	text-align: center;
+}
+
+.names-container a{
+	text-decoration: none;
+	color:#d0dfe9;
+}
+.names-container a:visited{
+	color: #d0dfe9;
+}
+
+.names-container a:hover{
+	color: white;
+}
