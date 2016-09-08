@@ -21,7 +21,7 @@
 
     <sec:authorize access="isAuthenticated()">
         <a href="/user"><sec:authentication property="principal.username" />
-        <a class="btn btn-info" href="<c:url value="/logout" />" role="button">Выйти </a>
+        <a class="btn btn-info" href="<c:url value="/logout" />" role="button">Выйти</a>
     </sec:authorize>
 
     <sec:authorize access="!isAuthenticated()">
