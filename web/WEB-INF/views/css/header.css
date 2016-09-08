@@ -1,0 +1,7 @@
+@import "loginForm.css";
+
+.user-panel {
+    width: 300px;
+    margin-left: auto;
+    text-align: right;
+}

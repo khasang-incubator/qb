@@ -38,7 +38,7 @@ public class AppController {
 
     @RequestMapping("/confidential/hello")
     public String message(Model model) {
-        model.addAttribute("message", "How you receive access to this sercure page!?");
+        model.addAttribute("message", "How you receive access to this secure page!?");
         return "message";
     }
 
@@ -79,4 +79,10 @@ public class AppController {
         model.addAttribute("hello", info);
         return "hello";
     }
+
+    @RequestMapping("/index")
+    public String start(Model model){
+        return "index";
+    }
+
 }
