@@ -18,6 +18,6 @@ question text);
 drop table if exists answers;
 create table answers (
 id serial primary key,
-question_id int,
+question_id int references questions(id),
 answer text,
 is_correct int);
