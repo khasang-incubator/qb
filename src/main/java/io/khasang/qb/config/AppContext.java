@@ -1,11 +1,22 @@
 package io.khasang.qb.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import io.khasang.qb.dao.AnswersDao;
+import io.khasang.qb.dao.QuestionsDao;
+import io.khasang.qb.dao.impl.AnswersDaoImpl;
+import io.khasang.qb.dao.impl.QuestionsDaoImpl;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AppContext {
 
-    @Autowired
-    HibernateConfig hibernateConfig;
+    @Bean
+    public AnswersDao answersDao() {
+        return new AnswersDaoImpl();
+    }
+
+    @Bean
+    public QuestionsDao questionsDao() {
+        return new QuestionsDaoImpl();
+    }
 }
