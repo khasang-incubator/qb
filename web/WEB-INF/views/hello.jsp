@@ -6,6 +6,14 @@
     <title>HELLO</title>
   </head>
   <body>
-  О ЧУДО !!!
+  О чудо!!! </br>
+
+  <c:forEach items="${answerses}" var="answers">
+    <td>Id: ${answers.getId()} </td>
+    <td>Вопрос: ${answers.getQuestion_id()} </td>
+    <td>Ответ: ${answers.getAnswer()} </td>
+    <td>Правильный ответ: ${answers.getIs_correct()} </td>
+    </br>
+  </c:forEach>
   </body>
 </html>
