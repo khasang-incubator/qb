@@ -5,15 +5,15 @@
   <head>
     <title>HELLO</title>
   </head>
-  <body>
+  <br>
   О чудо!!! </br>
+  
+    Roles table </br>
+    <c:forEach items="${roleses}" var="roles">
+      <td>Id: ${roles.getId()} </td>
+      <td>Роли: ${roles.getName()} </td>
+      </br>
 
-  <c:forEach items="${answerses}" var="answers">
-    <td>Id: ${answers.getId()} </td>
-    <td>Вопрос: ${answers.getQuestion_id()} </td>
-    <td>Ответ: ${answers.getAnswer()} </td>
-    <td>Правильный ответ: ${answers.getIs_correct()} </td>
-    </br>
   </c:forEach>
   </body>
 </html>

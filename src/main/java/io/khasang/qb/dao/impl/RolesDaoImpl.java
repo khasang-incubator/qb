@@ -1,7 +1,15 @@
 package io.khasang.qb.dao.impl;
 
-/**
- * Created by taliesyn on 16.09.2016.
- */
-public class RolesDaoImpl {
+import io.khasang.qb.dao.RolesDao;
+import io.khasang.qb.entity.Roles;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+@Transactional
+@Repository
+public class RolesDaoImpl extends BaseDaoImpl<Roles> implements RolesDao<Roles> {
+    @Override
+    protected Class<Roles> getEntityName() {
+        return Roles.class;
+    }
 }

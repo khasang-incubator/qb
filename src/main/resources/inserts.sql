@@ -12,6 +12,11 @@ VALUES ('allpowerfullandrew', 'allpowerfullandrew', '1');
 INSERT INTO users (login, password, role_id)
 VALUES ('browseup', 'browseup', '1');
 
+INSERT INTO questions (question)
+VALUES ('question1');
+INSERT INTO questions (question)
+VALUES ('question2');
+
 INSERT INTO answers (question_id, answer, is_correct)
 VALUES ('1', 'answer1', '1');
 INSERT INTO answers (question_id, answer, is_correct)
@@ -20,11 +25,6 @@ INSERT INTO answers (question_id, answer, is_correct)
 VALUES ('2', 'answer1', '1');
 INSERT INTO answers (question_id, answer, is_correct)
 VALUES ('2', 'answer2', '0');
-
-INSERT INTO questions (question)
-VALUES ('question1');
-INSERT INTO questions (question)
-VALUES ('question2');
 
 
 
