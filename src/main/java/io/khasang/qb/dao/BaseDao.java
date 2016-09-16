@@ -6,4 +6,6 @@ public interface BaseDao<T> {
     T getById(int id);
 
     List<T> getAll();
+
+    Class<T> getEntityName();
 }

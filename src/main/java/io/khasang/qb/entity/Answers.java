@@ -8,8 +8,12 @@ public class Answers {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @Column
     private String answer;
-    private int is_correct;
+
+    @Column(name = "is_correct")
+    private int isCorrect;
 
     @ManyToOne
     @JoinColumn(name = "question_id")
@@ -34,12 +38,12 @@ public class Answers {
         this.answer = answer;
     }
 
-    public int getIs_correct() {
-        return is_correct;
+    public int getIsCorrect() {
+        return isCorrect;
     }
 
-    public void setIs_correct(int is_correct) {
-        this.is_correct = is_correct;
+    public void setIsCorrect(int isCorrect) {
+        this.isCorrect = isCorrect;
     }
 
     public Questions getQuestion() {

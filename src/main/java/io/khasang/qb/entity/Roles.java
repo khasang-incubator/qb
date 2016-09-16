@@ -9,7 +9,10 @@ public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @Column
     private String name;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy= "role")
     private List<Users> users;
 

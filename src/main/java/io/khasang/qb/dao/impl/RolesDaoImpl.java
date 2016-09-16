@@ -8,8 +8,10 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Repository
 public class RolesDaoImpl extends BaseDaoImpl<Roles> implements RolesDao<Roles> {
+
     @Override
-    protected Class<Roles> getEntityName() {
+    public Class<Roles> getEntityName() {
         return Roles.class;
     }
+
 }

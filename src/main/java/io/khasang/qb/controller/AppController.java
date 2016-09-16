@@ -27,11 +27,11 @@ public class AppController {
 
     @RequestMapping("/")
     public String hello(Model model) {
-//        List<Answers> answerses = answersDao.getAll();
-//        model.addAttribute("answerses", answerses);
+        List<Answers> answerses = answersDao.getAll();
+        model.addAttribute("answerses", answerses);
 
-//        List<Questions> questionses = questionsDao.getAll();
-//        model.addAttribute("questionses", questionses);
+        List<Questions> questionses = questionsDao.getAll();
+        model.addAttribute("questionses", questionses);
 
         List<Roles> roleses = rolesDao.getAll();
         model.addAttribute("roleses", roleses);

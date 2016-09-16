@@ -8,7 +8,11 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+    @Column
     private String login;
+
+    @Column
     private String password;
 
     @ManyToOne

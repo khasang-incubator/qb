@@ -31,5 +31,5 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
         return (List<T>) criteria.list();
     }
 
-    protected abstract Class<T> getEntityName();
+    public abstract Class<T> getEntityName();
 }
