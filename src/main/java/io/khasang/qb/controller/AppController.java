@@ -39,4 +39,9 @@ public class AppController {
         return "hello";
     }
 
+    @RequestMapping("/test")
+    public String test(Model model) {
+        return "test";
+    }
+
 }
