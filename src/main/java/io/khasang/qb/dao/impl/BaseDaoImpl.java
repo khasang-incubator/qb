@@ -31,5 +31,15 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
         return (List<T>) criteria.list();
     }
 
+    @Override
+    public void saveEntity(T entity) {
+        sessionFactory.getCurrentSession().saveOrUpdate(entity);
+    }
+
+    @Override
+    public void deleteEntity(T entity) {
+        sessionFactory.getCurrentSession().delete(entity);
+    }
+
     public abstract Class<T> getEntityName();
 }

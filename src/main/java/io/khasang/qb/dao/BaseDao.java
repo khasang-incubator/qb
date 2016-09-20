@@ -8,4 +8,8 @@ public interface BaseDao<T> {
     List<T> getAll();
 
     Class<T> getEntityName();
+
+    void saveEntity(T entity);
+
+    void deleteEntity(T entity);
 }

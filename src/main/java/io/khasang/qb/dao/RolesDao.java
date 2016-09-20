@@ -1,4 +1,6 @@
 package io.khasang.qb.dao;
 
-public interface RolesDao<Roles> extends BaseDao<Roles> {
+import io.khasang.qb.entity.Roles;
+
+public interface RolesDao extends BaseDao<Roles> {
 }
