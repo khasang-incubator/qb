@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 @Repository
-public class AnswersDaoImpl extends BaseDaoImpl<Answer> implements AnswersDao<Answer> {
+public class AnswersDaoImpl extends BaseDaoImpl<Answer> implements AnswersDao {
 
     @Override
     public Class<Answer> getEntityName() {

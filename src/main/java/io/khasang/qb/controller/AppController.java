@@ -1,7 +1,7 @@
 package io.khasang.qb.controller;
 
 import io.khasang.qb.dao.AnswersDao;
-import io.khasang.qb.dao.QuestionsDao;
+import io.khasang.qb.dao.QuestionDao;
 import io.khasang.qb.dao.RolesDao;
 import io.khasang.qb.dao.UsersDao;
 import io.khasang.qb.entity.Answer;
@@ -27,7 +27,7 @@ public class AppController {
     private AnswersDao answersDao;
 
     @Autowired
-    private QuestionsDao questionsDao;
+    private QuestionDao questionsDao;
 
     @Autowired
     private RolesDao rolesDao;
@@ -43,7 +43,7 @@ public class AppController {
         List<Role> roles = rolesDao.getAll();
         model.addAttribute("roles", roles);
 
-        User user = (User) usersDao.getById(1);
+        User user = usersDao.getById(1);
         model.addAttribute("users", user);
 
         return "hello";
@@ -60,11 +60,25 @@ public class AppController {
         return "regist";
     }
 
+    @RequestMapping("/auth")
+    public String auth(Model model) {
+        model.addAttribute("user", new User());
+        return "auth";
+    }
+
+    @RequestMapping("/getauth")
+    public String auth(@ModelAttribute User user, Model model) {
+//        if (new Authentication(user).isCorrect()) return "success";
+//        return "fail";
+        User authUser = usersDao.getByLogin(user.getLogin());
+        if (authUser.getPassword().equals(user.getPassword())) return "success";
+        return "fail";
+    }
+
     @RequestMapping(value = "/registadd", method = RequestMethod.POST)
     public String addRegist(@ModelAttribute User user, Model model) {
         user.setRole(rolesDao.getById(1));
-        System.out.println(user.getLogin() + " " + user.getId() + " " + user.getPassword() + " " + user.getRole().getName());
         usersDao.saveEntity(user);
-        return "test";
+        return "success";
     }
 }

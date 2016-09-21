@@ -1,11 +1,11 @@
 package io.khasang.qb.config;
 
 import io.khasang.qb.dao.AnswersDao;
-import io.khasang.qb.dao.QuestionsDao;
+import io.khasang.qb.dao.QuestionDao;
 import io.khasang.qb.dao.RolesDao;
 import io.khasang.qb.dao.UsersDao;
 import io.khasang.qb.dao.impl.AnswersDaoImpl;
-import io.khasang.qb.dao.impl.QuestionsDaoImpl;
+import io.khasang.qb.dao.impl.QuestionDaoImpl;
 import io.khasang.qb.dao.impl.RolesDaoImpl;
 import io.khasang.qb.dao.impl.UsersDaoImpl;
 import io.khasang.qb.entity.Answer;
@@ -21,8 +21,8 @@ public class AppContext {
     }
 
     @Bean
-    public QuestionsDao questionsDao() {
-        return new QuestionsDaoImpl();
+    public QuestionDao questionsDao() {
+        return new QuestionDaoImpl();
     }
 
     @Bean
