@@ -62,9 +62,8 @@ public class AppController {
 
     @RequestMapping(value = "/registadd", method = RequestMethod.POST)
     public String addRegist(@ModelAttribute Users user, Model model) {
-        Roles roles = (Roles) rolesDao.getById(1);
-        user.setRole(roles);
-        System.out.println(user.getLogin() + " " + user.getPassword() + " " + user.getRole().getName());
+        user.setRole(rolesDao.getById(1));
+        System.out.println(user.getLogin() + " " + user.getId() + " " + user.getPassword() + " " + user.getRole().getName());
         usersDao.saveEntity(user);
         return "test";
     }

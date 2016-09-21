@@ -29,7 +29,7 @@
   </c:forEach>
 
   ${users.role}
-  ${users.role.}
+  ${users.role}
   </br>
   </body>
 
