@@ -4,7 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Questions {
+@Table(name = "questions")
+public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,9 +15,9 @@ public class Questions {
     private String question;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy= "question")
-    private List<Answers> answers;
+    private List<Answer> answers;
 
-    public Questions() {
+    public Question() {
     }
 
     public int getId() {
@@ -35,11 +36,11 @@ public class Questions {
         this.question = question;
     }
 
-    public List<Answers> getAnswers() {
+    public List<Answer> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(List<Answers> answers) {
+    public void setAnswers(List<Answer> answers) {
         this.answers = answers;
     }
 }

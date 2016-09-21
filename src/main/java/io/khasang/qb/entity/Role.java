@@ -4,7 +4,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Roles {
+@Table(name = "roles")
+public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -14,9 +15,9 @@ public class Roles {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy= "role")
-    private List<Users> users;
+    private List<User> users;
 
-    public Roles() {
+    public Role() {
     }
 
     public int getId() {
@@ -35,11 +36,11 @@ public class Roles {
         this.name = name;
     }
 
-    public List<Users> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
 
-    public void setUsers(List<Users> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 }

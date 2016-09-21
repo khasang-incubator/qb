@@ -4,7 +4,7 @@ import io.khasang.qb.config.AppContext;
 import io.khasang.qb.config.HibernateConfig;
 import io.khasang.qb.config.WebConfig;
 import io.khasang.qb.dao.AnswersDao;
-import io.khasang.qb.entity.Answers;
+import io.khasang.qb.entity.Answer;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,11 +22,11 @@ public class AnswersDaoImplTest extends AbstractTransactionalJUnit4SpringContext
     public AnswersDao answersDao;
 
     @Autowired
-    public Answers answers;
+    public Answer answers;
 
     @Test
     public void getEntityNameTest() {
         Assert.assertNotNull(answersDao);
-        Assert.assertEquals(Answers.class, answersDao.getEntityName());
+        Assert.assertEquals(Answer.class, answersDao.getEntityName());
     }
 }

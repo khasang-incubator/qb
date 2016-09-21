@@ -8,7 +8,7 @@ import io.khasang.qb.dao.impl.AnswersDaoImpl;
 import io.khasang.qb.dao.impl.QuestionsDaoImpl;
 import io.khasang.qb.dao.impl.RolesDaoImpl;
 import io.khasang.qb.dao.impl.UsersDaoImpl;
-import io.khasang.qb.entity.Answers;
+import io.khasang.qb.entity.Answer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -31,8 +31,8 @@ public class AppContext {
     }
 
     @Bean
-    public Answers answers() {
-        return new Answers();
+    public Answer answers() {
+        return new Answer();
     }
 
     @Bean

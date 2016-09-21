@@ -3,7 +3,8 @@ package io.khasang.qb.entity;
 import javax.persistence.*;
 
 @Entity
-public class Answers {
+@Table(name = "answers")
+public class Answer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,9 +18,9 @@ public class Answers {
 
     @ManyToOne
     @JoinColumn(name = "question_id")
-    private Questions question;
+    private Question question;
 
-    public Answers() {
+    public Answer() {
     }
 
     public int getId() {
@@ -46,11 +47,11 @@ public class Answers {
         this.isCorrect = isCorrect;
     }
 
-    public Questions getQuestion() {
+    public Question getQuestion() {
         return question;
     }
 
-    public void setQuestion(Questions question) {
+    public void setQuestion(Question question) {
         this.question = question;
     }
 }

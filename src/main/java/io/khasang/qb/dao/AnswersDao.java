@@ -1,4 +1,4 @@
 package io.khasang.qb.dao;
 
-public interface AnswersDao<Answers> extends BaseDao<Answers> {
+public interface AnswersDao<Answer> extends BaseDao<Answer> {
 }

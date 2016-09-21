@@ -1,11 +1,11 @@
 package io.khasang.qb.dao.impl;
 
 import io.khasang.qb.dao.UsersDao;
-import io.khasang.qb.entity.Users;
+import io.khasang.qb.entity.User;
 
-public class UsersDaoImpl extends BaseDaoImpl<Users> implements UsersDao<Users> {
+public class UsersDaoImpl extends BaseDaoImpl<User> implements UsersDao<User> {
     @Override
-    public Class<Users> getEntityName() {
-        return Users.class;
+    public Class<User> getEntityName() {
+        return User.class;
     }
 }

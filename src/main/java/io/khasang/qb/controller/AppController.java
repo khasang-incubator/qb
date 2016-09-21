@@ -4,10 +4,10 @@ import io.khasang.qb.dao.AnswersDao;
 import io.khasang.qb.dao.QuestionsDao;
 import io.khasang.qb.dao.RolesDao;
 import io.khasang.qb.dao.UsersDao;
-import io.khasang.qb.entity.Answers;
-import io.khasang.qb.entity.Questions;
-import io.khasang.qb.entity.Roles;
-import io.khasang.qb.entity.Users;
+import io.khasang.qb.entity.Answer;
+import io.khasang.qb.entity.Question;
+import io.khasang.qb.entity.Role;
+import io.khasang.qb.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,17 +34,17 @@ public class AppController {
 
     @RequestMapping("/")
     public String hello(Model model) {
-        List<Answers> answers = answersDao.getAll();
+        List<Answer> answers = answersDao.getAll();
         model.addAttribute("answers", answers);
 
-        List<Questions> questions = questionsDao.getAll();
+        List<Question> questions = questionsDao.getAll();
         model.addAttribute("questions", questions);
 
-        List<Roles> roles = rolesDao.getAll();
+        List<Role> roles = rolesDao.getAll();
         model.addAttribute("roles", roles);
 
-        Users users = (Users) usersDao.getById(1);
-        model.addAttribute("users", users);
+        User user = (User) usersDao.getById(1);
+        model.addAttribute("users", user);
 
         return "hello";
     }
@@ -56,12 +56,12 @@ public class AppController {
 
     @RequestMapping("/regist")
     public String regist(Model model) {
-        model.addAttribute("user", new Users());
+        model.addAttribute("user", new User());
         return "regist";
     }
 
     @RequestMapping(value = "/registadd", method = RequestMethod.POST)
-    public String addRegist(@ModelAttribute Users user, Model model) {
+    public String addRegist(@ModelAttribute User user, Model model) {
         user.setRole(rolesDao.getById(1));
         System.out.println(user.getLogin() + " " + user.getId() + " " + user.getPassword() + " " + user.getRole().getName());
         usersDao.saveEntity(user);
