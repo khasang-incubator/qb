@@ -9,6 +9,7 @@ import io.khasang.qb.dao.impl.QuestionDaoImpl;
 import io.khasang.qb.dao.impl.RolesDaoImpl;
 import io.khasang.qb.dao.impl.UsersDaoImpl;
 import io.khasang.qb.entity.Answer;
+import io.khasang.qb.logic.Authentication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -38,5 +39,10 @@ public class AppContext {
     @Bean
     public UsersDao usersDao() {
         return new UsersDaoImpl();
+    }
+
+    @Bean
+    public Authentication authentication() {
+        return new Authentication();
     }
 }

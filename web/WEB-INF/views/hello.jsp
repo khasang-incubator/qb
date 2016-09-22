@@ -27,9 +27,6 @@
     <td>Id: ${questions.getQuestion()} </td>
     </br>
   </c:forEach>
-
-  ${users.role}
-  ${users.role}
   </br>
   </body>
 

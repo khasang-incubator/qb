@@ -8,6 +8,7 @@ import io.khasang.qb.entity.Answer;
 import io.khasang.qb.entity.Question;
 import io.khasang.qb.entity.Role;
 import io.khasang.qb.entity.User;
+import io.khasang.qb.logic.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +32,9 @@ public class AppController {
 
     @Autowired
     private RolesDao rolesDao;
+
+    @Autowired
+    private Authentication authentication;
 
     @RequestMapping("/")
     public String hello(Model model) {
@@ -68,10 +72,7 @@ public class AppController {
 
     @RequestMapping("/getauth")
     public String auth(@ModelAttribute User user, Model model) {
-//        if (new Authentication(user).isCorrect()) return "success";
-//        return "fail";
-        User authUser = usersDao.getByLogin(user.getLogin());
-        if (authUser.getPassword().equals(user.getPassword())) return "success";
+        if (authentication.isCorrect(user)) return "success";
         return "fail";
     }
 

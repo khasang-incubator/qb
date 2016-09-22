@@ -3,19 +3,18 @@ package io.khasang.qb.logic;
 import io.khasang.qb.dao.UsersDao;
 import io.khasang.qb.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Authentication {
     @Autowired
     private UsersDao usersDao;
 
-    private User user;
-
-    public Authentication(User user) {
-        this.user = user;
+    public Authentication() {
     }
 
-    public boolean isCorrect() {
+    public boolean isCorrect(User user) {
         User authUser = usersDao.getByLogin(user.getLogin());
-        return authUser.getPassword().equals(user.getPassword());
+        return authUser != null && authUser.getPassword().equals(user.getPassword());
     }
 }
