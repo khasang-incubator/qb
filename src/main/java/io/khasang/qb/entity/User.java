@@ -1,6 +1,8 @@
 package io.khasang.qb.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -10,9 +12,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Size(min = 4, max = 8, message = "Логин должен содержать от 4 до 8 символов.")
+    //@Pattern(regexp = "[A-Za-z0-9]")
     @Column
     private String login;
 
+    @Size(min = 6, max = 10, message = "Пароль должен содержать от 6 до 10 символов.")
+    //@Pattern(regexp = "[A-Za-z0-9]")
     @Column
     private String password;
 

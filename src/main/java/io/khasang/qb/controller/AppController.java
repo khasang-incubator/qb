@@ -12,10 +12,13 @@ import io.khasang.qb.logic.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -58,6 +61,7 @@ public class AppController {
         return "test";
     }
 
+
     @RequestMapping("/regist")
     public String regist(Model model) {
         model.addAttribute("user", new User());
@@ -77,7 +81,8 @@ public class AppController {
     }
 
     @RequestMapping(value = "/registadd", method = RequestMethod.POST)
-    public String addRegist(@ModelAttribute User user, Model model) {
+    public String addRegist(@Validated User user, BindingResult result, Model model) {
+        if (result.hasErrors()) return "regist";
         user.setRole(rolesDao.getById(1));
         usersDao.saveEntity(user);
         return "success";
