@@ -10,11 +10,23 @@ import io.khasang.qb.dao.impl.RolesDaoImpl;
 import io.khasang.qb.dao.impl.UsersDaoImpl;
 import io.khasang.qb.entity.Answer;
 import io.khasang.qb.logic.Authentication;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl;
 
 @Configuration
+@PropertySource(value = {"classpath:auth.properties"})
 public class AppContext {
+
+    @Autowired
+    HibernateConfig hibernateConfig;
+
+    @Autowired
+    Environment environment;
 
     @Bean
     public AnswersDao answersDao() {
@@ -44,5 +56,14 @@ public class AppContext {
     @Bean
     public Authentication authentication() {
         return new Authentication();
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        JdbcDaoImpl jdbcImpl = new JdbcDaoImpl();
+        jdbcImpl.setDataSource(hibernateConfig.dataSource());
+        jdbcImpl.setUsersByUsernameQuery(environment.getRequiredProperty("usersByQuery"));
+        jdbcImpl.setAuthoritiesByUsernameQuery(environment.getRequiredProperty("rolesByQuery"));
+        return jdbcImpl;
     }
 }

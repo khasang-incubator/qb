@@ -10,6 +10,7 @@ import io.khasang.qb.entity.Role;
 import io.khasang.qb.entity.User;
 import io.khasang.qb.logic.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -80,11 +81,19 @@ public class AppController {
         return "fail";
     }
 
+    @RequestMapping("/auth/test")
+    public String authTest(Model model) {
+        return "hello";
+    }
+
     @RequestMapping(value = "/registadd", method = RequestMethod.POST)
     public String addRegist(@Validated User user, BindingResult result, Model model) {
         if (result.hasErrors()) return "regist";
         user.setRole(rolesDao.getById(1));
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
         usersDao.saveEntity(user);
         return "success";
     }
+
+
 }

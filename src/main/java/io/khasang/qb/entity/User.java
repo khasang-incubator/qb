@@ -17,7 +17,7 @@ public class User {
     @Column
     private String login;
 
-    @Size(min = 6, max = 10, message = "Пароль должен содержать от 6 до 10 символов.")
+//    @Size(min = 6, max = 10, message = "Пароль должен содержать от 6 до 10 символов.")
     //@Pattern(regexp = "[A-Za-z0-9]")
     @Column
     private String password;
