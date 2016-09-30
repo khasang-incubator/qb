@@ -90,7 +90,7 @@ public class AppController {
     public String addRegist(@Validated User user, BindingResult result, Model model) {
         if (result.hasErrors()) return "regist";
         user.setRole(rolesDao.getById(1));
-        user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+        user.setPassword(new BCryptPasswordEncoder().encode(user.getPasswordIn()));
         usersDao.saveEntity(user);
         return "success";
     }

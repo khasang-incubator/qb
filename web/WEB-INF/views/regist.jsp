@@ -20,9 +20,9 @@
 
         <spring:input type="text" class="form-control" placeholder="Email address" required="" autofocus="" name="login" path="login"/>
         <spring:errors path="login"></spring:errors>
-        <label for="password">Password: </label>
-        <spring:input type="password" class="form-control" placeholder="Password" required="" name="password" path="password"/>
-        <spring:errors path="password"></spring:errors>
+        <label for="passwordIn">Password: </label>
+        <spring:input type="passwordIn" class="form-control" placeholder="PasswordIn" required="" name="passwordIn" path="passwordIn"/>
+        <spring:errors path="passwordIn"></spring:errors>
         <label class="checkbox">
             <input type="checkbox" value="remember-me"> Запомнить меня.
         </label>

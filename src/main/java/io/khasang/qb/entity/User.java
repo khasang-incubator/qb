@@ -22,6 +22,10 @@ public class User {
     @Column
     private String password;
 
+    @Size(min = 6, max = 10, message = "Пароль должен содержать от 6 до 10 символов.")
+    @Transient
+    private String passwordIn;
+
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
@@ -59,5 +63,13 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getPasswordIn() {
+        return passwordIn;
+    }
+
+    public void setPasswordIn(String passwordIn) {
+        this.passwordIn = passwordIn;
     }
 }
