@@ -45,7 +45,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/auth/**").access("hasRole('USER')")
+                .antMatchers("/index/**").access("hasRole('USER')")
 //                .antMatchers("/pampam/**").access("hasRole('SUPER_ADMIN')")
                 .and().formLogin().defaultSuccessUrl("/", false)
                 .and().csrf().disable().

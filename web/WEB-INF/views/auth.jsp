@@ -3,14 +3,21 @@
 
 <html>
 <head>
+    <meta charset="utf-8">
     <title>Авторизация</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/signin.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
 
-    <spring:form action="/getauth" class="form-signin" role="form" modelAttribute="user" method="post">
+    <spring:form action="/login" class="form-signin" role="form" modelAttribute="user" method="post">
         <h2 class="form-signin-heading">Авторизация</h2>
-        <spring:input type="text" class="form-control" placeholder="Email address" required="" autofocus="" name="login" path="login"/>
+        <spring:input type="text" class="form-control" placeholder="Email address" required="" autofocus="" name="username" path="login"/>
         <spring:input type="password" class="form-control" placeholder="Password" required="" name="password" path="password"/>
         <label class="checkbox">
             <input type="checkbox" value="remember-me"> Запомнить меня.

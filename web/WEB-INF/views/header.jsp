@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
@@ -23,7 +24,16 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Регистрация</a></li>
+
+                <sec:authorize access="!isAuthenticated()">
+                    <li><a href="/regist">Регистрация</a></li>
+                    <li><a href="/auth">Авторизация</a></li>
+                </sec:authorize>
+                <sec:authorize access="isAuthenticated()">
+                    <li>Ваш логин: <sec:authentication property="principal.username" /></li>
+                    <li><a href="<c:url value="/logout" />" role="button">Выйти</a></li>
+
+                </sec:authorize>
 
             </ul>
         </div><!-- /.navbar-collapse -->
